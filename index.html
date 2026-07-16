@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alejandro Magaña — Music Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #19191c;
+    --panel: #232327;
+    --panel-border: #35353a;
+    --text: #edeae3;
+    --muted: #948f88;
+    --amber: #f2a93b;
+    --cyan: #5fc9c2;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body{
+    background-image:
+      radial-gradient(ellipse 900px 500px at 20% -10%, rgba(242,169,59,0.07), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(95,201,194,0.06), transparent 60%);
+  }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  header{
+    padding: 96px 0 64px;
+  }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow .dot{
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 8px 1px rgba(242,169,59,0.7);
+    animation: blink 2.6s ease-in-out infinite;
+  }
+
+  @keyframes blink{
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 7vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+  }
+
+  h1 span{
+    color: var(--amber);
+  }
+
+  .subhead{
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .contact-line{
+    margin: 20px 0 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+  }
+
+  .contact-line a{
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(95,201,194,0.35);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contact-line a:hover, .contact-line a:focus-visible{
+    color: var(--amber);
+    border-color: var(--amber);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow .dot{ animation: none; }
+  }
+
+  /* ---------- Channel strips (links) ---------- */
+
+  .rack{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 90px;
+  }
+
+  .strip{
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 18px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  }
+
+  .strip:hover, .strip:focus-visible{
+    border-color: var(--amber);
+    background: #27272c;
+    transform: translateY(-1px);
+  }
+
+  .strip:focus-visible{
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+  }
+
+  .strip .icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #1c1c1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .strip .icon svg{ width: 20px; height: 20px; }
+
+  .strip .info .label{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 3px;
+  }
+
+  .strip .info .desc{
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .strip .go{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ---------- Embed card (Spotify) ---------- */
+
+  .strip-embed{
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    overflow: hidden;
+  }
+
+  .strip-embed .strip-header{
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .strip-embed .icon{
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #1c1c1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .strip-embed .icon svg{ width: 20px; height: 20px; }
+
+  .strip-embed .info .label{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 3px;
+  }
+
+  .strip-embed .info .desc{
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .strip-embed iframe{
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    display: block;
+  }
+
+  /* ---------- Badges ---------- */
+
+  .badges{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
+
+  .badges img{
+    display: block;
+    max-width: 130px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: 0 0 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--panel-border);
+    margin-top: -24px;
+    padding-top: 28px;
+  }
+
+  @media (max-width: 520px){
+    header{ padding-top: 64px; }
+    .strip{ grid-template-columns: 40px 1fr; }
+    .strip .go{ display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow"><span class="dot"></span>Production &amp; Mixing &amp; Mastering</div>
+    <h1>Alejandro<br><span>Magaña.</span></h1>
+    <p class="subhead">From a small idea to a finished product. Nine years producing, mixing, and mastering music for artists and libraries around the world.</p>
+    <p class="contact-line">Contact me: <a href="mailto:hello.a.m.music@gmail.com">hello.a.m.music@gmail.com</a></p>
+  </header>
+
+  <div class="rack">
+
+    <div class="strip-embed">
+      <div class="strip-header">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="#5fc9c2" stroke-width="1.6"/>
+            <path d="M7 10c3-1 7-1 10 0.6M7.5 13c2.5-0.8 6-0.6 8.3 0.6M8 16c2-0.6 4.8-0.5 6.7 0.5" stroke="#5fc9c2" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="info">
+          <div class="label">Spotify — Productions</div>
+          <div class="desc">A playlist of selected production, mixing, and mastering work.</div>
+        </div>
+      </div>
+      <iframe src="https://open.spotify.com/embed/playlist/3gVa9cQ5olyL1stBJ5JJLt?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <a class="strip" href="https://mixkit.co/free-stock-music/" target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 17V7l9-2v10" stroke="#edeae3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="4" cy="17" r="2" stroke="#edeae3" stroke-width="1.6"/>
+          <circle cx="13" cy="15" r="2" stroke="#edeae3" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="info">
+        <div class="label">Envato / Mixkit — Music Library</div>
+        <div class="desc">Original compositions created for Envato's Mixkit audio library.</div>
+      </div>
+      <div class="go">EXPLORE →</div>
+    </a>
+
+    <a class="strip" href="https://www.instagram.com/aememusic/" target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="16" height="16" rx="5" stroke="#f2a93b" stroke-width="1.6"/>
+          <circle cx="12" cy="12" r="3.6" stroke="#f2a93b" stroke-width="1.6"/>
+          <circle cx="16.6" cy="7.4" r="1" fill="#f2a93b"/>
+        </svg>
+      </div>
+      <div class="info">
+        <div class="label">Instagram — @aememusic</div>
+        <div class="desc">Behind-the-scenes production process and work in progress.</div>
+      </div>
+      <div class="go">FOLLOW →</div>
+    </a>
+
+  </div>
+
+  <div class="badges">
+    <a href="https://soundbetter.com/profiles/733519-alejandro-maga%C3%B1a" rel="noopener noreferrer" target="_blank" title="Alejandro Magaña profile on SoundBetter">
+      <img alt="Alejandro Magaña, Producer on SoundBetter" src="https://d2p6ecj15pyavq.cloudfront.net/assets/SoundBetterBadge-c84cb3e75c4267f5bee41f7f617a81d9.svg" />
+    </a>
+  </div>
+
+  <footer>
+    <span>© 2026 Alejandro Magaña</span>
+    <span>Music Producer · Mixing &amp; Mastering Engineer</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
